@@ -1,0 +1,63 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="QLSV_CANHANModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="LOP">
+    <Key>
+      <PropertyRef Name="MALOP" />
+    </Key>
+    <Property Name="MALOP" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="TENLOP" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="MANV" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="NHANVIEN">
+    <Key>
+      <PropertyRef Name="MANV" />
+    </Key>
+    <Property Name="MANV" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="HOTEN" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="EMAIL" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="LUONG" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="TENDN" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="MATKHAU" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
+  </EntityType>
+  <EntityType Name="SINHVIEN">
+    <Key>
+      <PropertyRef Name="MASV" />
+    </Key>
+    <Property Name="MASV" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="HOTEN" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="NGAYSINH" Type="DateTime" Precision="3" />
+    <Property Name="DIACHI" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="MALOP" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="TENDN" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="MATKHAU" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
+  </EntityType>
+  <EntityContainer Name="QLSV_CANHANEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="LOPs" EntityType="Self.LOP" />
+    <EntitySet Name="NHANVIENs" EntityType="Self.NHANVIEN" />
+    <EntitySet Name="SINHVIENs" EntityType="Self.SINHVIEN" />
+    <FunctionImport Name="SP_INS_ENCRYPT_NHANVIEN">
+      <Parameter Name="MANV" Mode="In" Type="String" />
+      <Parameter Name="HOTEN" Mode="In" Type="String" />
+      <Parameter Name="EMAIL" Mode="In" Type="String" />
+      <Parameter Name="LUONG" Mode="In" Type="String" />
+      <Parameter Name="TENDN" Mode="In" Type="String" />
+      <Parameter Name="MATKHAU" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="SP_INS_ENCRYPT_SINHVIEN">
+      <Parameter Name="MASV" Mode="In" Type="String" />
+      <Parameter Name="HOTEN" Mode="In" Type="String" />
+      <Parameter Name="NGAYSINH" Mode="In" Type="DateTime" />
+      <Parameter Name="DIACHI" Mode="In" Type="String" />
+      <Parameter Name="MALOP" Mode="In" Type="String" />
+      <Parameter Name="TENDN" Mode="In" Type="String" />
+      <Parameter Name="MATKHAU" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="SP_SEL_ENCRYPT_NHANVIEN" ReturnType="Collection(QLSV_CANHANModel.SP_SEL_ENCRYPT_NHANVIEN_Result)" />
+  </EntityContainer>
+  <ComplexType Name="SP_SEL_ENCRYPT_NHANVIEN_Result">
+    <Property Type="String" Name="MANV" Nullable="false" MaxLength="20" />
+    <Property Type="String" Name="HOTEN" Nullable="false" MaxLength="100" />
+    <Property Type="String" Name="EMAIL" Nullable="true" MaxLength="20" />
+    <Property Type="String" Name="LUONG" Nullable="true" />
+  </ComplexType>
+</Schema>

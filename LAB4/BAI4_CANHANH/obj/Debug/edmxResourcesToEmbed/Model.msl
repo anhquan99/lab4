@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="QLSV_CANHANModelStoreContainer" CdmEntityContainer="QLSV_CANHANEntities">
+    <EntitySetMapping Name="LOPs">
+      <EntityTypeMapping TypeName="QLSV_CANHANModel.LOP">
+        <MappingFragment StoreEntitySet="LOP">
+          <ScalarProperty Name="MALOP" ColumnName="MALOP" />
+          <ScalarProperty Name="TENLOP" ColumnName="TENLOP" />
+          <ScalarProperty Name="MANV" ColumnName="MANV" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="NHANVIENs">
+      <EntityTypeMapping TypeName="QLSV_CANHANModel.NHANVIEN">
+        <MappingFragment StoreEntitySet="NHANVIEN">
+          <ScalarProperty Name="MANV" ColumnName="MANV" />
+          <ScalarProperty Name="HOTEN" ColumnName="HOTEN" />
+          <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+          <ScalarProperty Name="LUONG" ColumnName="LUONG" />
+          <ScalarProperty Name="TENDN" ColumnName="TENDN" />
+          <ScalarProperty Name="MATKHAU" ColumnName="MATKHAU" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SINHVIENs">
+      <EntityTypeMapping TypeName="QLSV_CANHANModel.SINHVIEN">
+        <MappingFragment StoreEntitySet="SINHVIEN">
+          <ScalarProperty Name="MASV" ColumnName="MASV" />
+          <ScalarProperty Name="HOTEN" ColumnName="HOTEN" />
+          <ScalarProperty Name="NGAYSINH" ColumnName="NGAYSINH" />
+          <ScalarProperty Name="DIACHI" ColumnName="DIACHI" />
+          <ScalarProperty Name="MALOP" ColumnName="MALOP" />
+          <ScalarProperty Name="TENDN" ColumnName="TENDN" />
+          <ScalarProperty Name="MATKHAU" ColumnName="MATKHAU" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="SP_INS_ENCRYPT_NHANVIEN" FunctionName="QLSV_CANHANModel.Store.SP_INS_ENCRYPT_NHANVIEN" />
+    <FunctionImportMapping FunctionImportName="SP_INS_ENCRYPT_SINHVIEN" FunctionName="QLSV_CANHANModel.Store.SP_INS_ENCRYPT_SINHVIEN" />
+    <FunctionImportMapping FunctionImportName="SP_SEL_ENCRYPT_NHANVIEN" FunctionName="QLSV_CANHANModel.Store.SP_SEL_ENCRYPT_NHANVIEN">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="QLSV_CANHANModel.SP_SEL_ENCRYPT_NHANVIEN_Result">
+          <ScalarProperty Name="MANV" ColumnName="MANV" />
+          <ScalarProperty Name="HOTEN" ColumnName="HOTEN" />
+          <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+          <ScalarProperty Name="LUONG" ColumnName="LUONG" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+  </EntityContainerMapping>
+</Mapping>

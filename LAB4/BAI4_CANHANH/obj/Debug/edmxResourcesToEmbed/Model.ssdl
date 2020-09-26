@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="QLSV_CANHANModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="LOP">
+    <Key>
+      <PropertyRef Name="MALOP" />
+    </Key>
+    <Property Name="MALOP" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="TENLOP" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="MANV" Type="varchar" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="NHANVIEN">
+    <Key>
+      <PropertyRef Name="MANV" />
+    </Key>
+    <Property Name="MANV" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="HOTEN" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="EMAIL" Type="varchar" MaxLength="20" />
+    <Property Name="LUONG" Type="varbinary(max)" />
+    <Property Name="TENDN" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="MATKHAU" Type="varbinary(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="SINHVIEN">
+    <Key>
+      <PropertyRef Name="MASV" />
+    </Key>
+    <Property Name="MASV" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="HOTEN" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="NGAYSINH" Type="datetime" />
+    <Property Name="DIACHI" Type="nvarchar" MaxLength="200" />
+    <Property Name="MALOP" Type="varchar" MaxLength="100" />
+    <Property Name="TENDN" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="MATKHAU" Type="varbinary(max)" Nullable="false" />
+  </EntityType>
+  <Function Name="SP_INS_ENCRYPT_NHANVIEN" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="MANV" Type="nvarchar" Mode="In" />
+    <Parameter Name="HOTEN" Type="nvarchar" Mode="In" />
+    <Parameter Name="EMAIL" Type="varchar" Mode="In" />
+    <Parameter Name="LUONG" Type="varchar(max)" Mode="In" />
+    <Parameter Name="TENDN" Type="nvarchar" Mode="In" />
+    <Parameter Name="MATKHAU" Type="varchar(max)" Mode="In" />
+  </Function>
+  <Function Name="SP_INS_ENCRYPT_SINHVIEN" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="MASV" Type="nvarchar" Mode="In" />
+    <Parameter Name="HOTEN" Type="nvarchar" Mode="In" />
+    <Parameter Name="NGAYSINH" Type="datetime" Mode="In" />
+    <Parameter Name="DIACHI" Type="nvarchar" Mode="In" />
+    <Parameter Name="MALOP" Type="nvarchar" Mode="In" />
+    <Parameter Name="TENDN" Type="nvarchar" Mode="In" />
+    <Parameter Name="MATKHAU" Type="nvarchar(max)" Mode="In" />
+  </Function>
+  <Function Name="SP_SEL_ENCRYPT_NHANVIEN" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <EntityContainer Name="QLSV_CANHANModelStoreContainer">
+    <EntitySet Name="LOP" EntityType="Self.LOP" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="NHANVIEN" EntityType="Self.NHANVIEN" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SINHVIEN" EntityType="Self.SINHVIEN" Schema="dbo" store:Type="Tables" />
+  </EntityContainer>
+</Schema>

@@ -1,0 +1,202 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="QLSV_CANHANModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="LOP">
+          <Key>
+            <PropertyRef Name="MALOP" />
+          </Key>
+          <Property Name="MALOP" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="TENLOP" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="MANV" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="NHANVIEN">
+          <Key>
+            <PropertyRef Name="MANV" />
+          </Key>
+          <Property Name="MANV" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="HOTEN" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="EMAIL" Type="varchar" MaxLength="20" />
+          <Property Name="LUONG" Type="varbinary(max)" />
+          <Property Name="TENDN" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="MATKHAU" Type="varbinary(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SINHVIEN">
+          <Key>
+            <PropertyRef Name="MASV" />
+          </Key>
+          <Property Name="MASV" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="HOTEN" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="NGAYSINH" Type="datetime" />
+          <Property Name="DIACHI" Type="nvarchar" MaxLength="200" />
+          <Property Name="MALOP" Type="varchar" MaxLength="100" />
+          <Property Name="TENDN" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="MATKHAU" Type="varbinary(max)" Nullable="false" />
+        </EntityType>
+        <Function Name="SP_INS_ENCRYPT_NHANVIEN" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="MANV" Type="nvarchar" Mode="In" />
+          <Parameter Name="HOTEN" Type="nvarchar" Mode="In" />
+          <Parameter Name="EMAIL" Type="varchar" Mode="In" />
+          <Parameter Name="LUONG" Type="varchar(max)" Mode="In" />
+          <Parameter Name="TENDN" Type="nvarchar" Mode="In" />
+          <Parameter Name="MATKHAU" Type="varchar(max)" Mode="In" />
+        </Function>
+        <Function Name="SP_INS_ENCRYPT_SINHVIEN" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="MASV" Type="nvarchar" Mode="In" />
+          <Parameter Name="HOTEN" Type="nvarchar" Mode="In" />
+          <Parameter Name="NGAYSINH" Type="datetime" Mode="In" />
+          <Parameter Name="DIACHI" Type="nvarchar" Mode="In" />
+          <Parameter Name="MALOP" Type="nvarchar" Mode="In" />
+          <Parameter Name="TENDN" Type="nvarchar" Mode="In" />
+          <Parameter Name="MATKHAU" Type="nvarchar(max)" Mode="In" />
+        </Function>
+        <Function Name="SP_SEL_ENCRYPT_NHANVIEN" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <EntityContainer Name="QLSV_CANHANModelStoreContainer">
+          <EntitySet Name="LOP" EntityType="Self.LOP" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="NHANVIEN" EntityType="Self.NHANVIEN" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SINHVIEN" EntityType="Self.SINHVIEN" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="QLSV_CANHANModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="LOP">
+          <Key>
+            <PropertyRef Name="MALOP" />
+          </Key>
+          <Property Name="MALOP" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="TENLOP" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="MANV" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="NHANVIEN">
+          <Key>
+            <PropertyRef Name="MANV" />
+          </Key>
+          <Property Name="MANV" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="HOTEN" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="EMAIL" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="LUONG" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="TENDN" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="MATKHAU" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SINHVIEN">
+          <Key>
+            <PropertyRef Name="MASV" />
+          </Key>
+          <Property Name="MASV" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="HOTEN" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="NGAYSINH" Type="DateTime" Precision="3" />
+          <Property Name="DIACHI" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="MALOP" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="TENDN" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="MATKHAU" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="QLSV_CANHANEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="LOPs" EntityType="Self.LOP" />
+          <EntitySet Name="NHANVIENs" EntityType="Self.NHANVIEN" />
+          <EntitySet Name="SINHVIENs" EntityType="Self.SINHVIEN" />
+          <FunctionImport Name="SP_INS_ENCRYPT_NHANVIEN">
+            <Parameter Name="MANV" Mode="In" Type="String" />
+            <Parameter Name="HOTEN" Mode="In" Type="String" />
+            <Parameter Name="EMAIL" Mode="In" Type="String" />
+            <Parameter Name="LUONG" Mode="In" Type="String" />
+            <Parameter Name="TENDN" Mode="In" Type="String" />
+            <Parameter Name="MATKHAU" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="SP_INS_ENCRYPT_SINHVIEN">
+            <Parameter Name="MASV" Mode="In" Type="String" />
+            <Parameter Name="HOTEN" Mode="In" Type="String" />
+            <Parameter Name="NGAYSINH" Mode="In" Type="DateTime" />
+            <Parameter Name="DIACHI" Mode="In" Type="String" />
+            <Parameter Name="MALOP" Mode="In" Type="String" />
+            <Parameter Name="TENDN" Mode="In" Type="String" />
+            <Parameter Name="MATKHAU" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="SP_SEL_ENCRYPT_NHANVIEN" ReturnType="Collection(QLSV_CANHANModel.SP_SEL_ENCRYPT_NHANVIEN_Result)" />
+        </EntityContainer>
+        <ComplexType Name="SP_SEL_ENCRYPT_NHANVIEN_Result">
+          <Property Type="String" Name="MANV" Nullable="false" MaxLength="20" />
+          <Property Type="String" Name="HOTEN" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="EMAIL" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="LUONG" Nullable="true" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="QLSV_CANHANModelStoreContainer" CdmEntityContainer="QLSV_CANHANEntities">
+          <EntitySetMapping Name="LOPs">
+            <EntityTypeMapping TypeName="QLSV_CANHANModel.LOP">
+              <MappingFragment StoreEntitySet="LOP">
+                <ScalarProperty Name="MALOP" ColumnName="MALOP" />
+                <ScalarProperty Name="TENLOP" ColumnName="TENLOP" />
+                <ScalarProperty Name="MANV" ColumnName="MANV" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NHANVIENs">
+            <EntityTypeMapping TypeName="QLSV_CANHANModel.NHANVIEN">
+              <MappingFragment StoreEntitySet="NHANVIEN">
+                <ScalarProperty Name="MANV" ColumnName="MANV" />
+                <ScalarProperty Name="HOTEN" ColumnName="HOTEN" />
+                <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+                <ScalarProperty Name="LUONG" ColumnName="LUONG" />
+                <ScalarProperty Name="TENDN" ColumnName="TENDN" />
+                <ScalarProperty Name="MATKHAU" ColumnName="MATKHAU" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SINHVIENs">
+            <EntityTypeMapping TypeName="QLSV_CANHANModel.SINHVIEN">
+              <MappingFragment StoreEntitySet="SINHVIEN">
+                <ScalarProperty Name="MASV" ColumnName="MASV" />
+                <ScalarProperty Name="HOTEN" ColumnName="HOTEN" />
+                <ScalarProperty Name="NGAYSINH" ColumnName="NGAYSINH" />
+                <ScalarProperty Name="DIACHI" ColumnName="DIACHI" />
+                <ScalarProperty Name="MALOP" ColumnName="MALOP" />
+                <ScalarProperty Name="TENDN" ColumnName="TENDN" />
+                <ScalarProperty Name="MATKHAU" ColumnName="MATKHAU" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="SP_INS_ENCRYPT_NHANVIEN" FunctionName="QLSV_CANHANModel.Store.SP_INS_ENCRYPT_NHANVIEN" />
+          <FunctionImportMapping FunctionImportName="SP_INS_ENCRYPT_SINHVIEN" FunctionName="QLSV_CANHANModel.Store.SP_INS_ENCRYPT_SINHVIEN" />
+          <FunctionImportMapping FunctionImportName="SP_SEL_ENCRYPT_NHANVIEN" FunctionName="QLSV_CANHANModel.Store.SP_SEL_ENCRYPT_NHANVIEN">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="QLSV_CANHANModel.SP_SEL_ENCRYPT_NHANVIEN_Result">
+                <ScalarProperty Name="MANV" ColumnName="MANV" />
+                <ScalarProperty Name="HOTEN" ColumnName="HOTEN" />
+                <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+                <ScalarProperty Name="LUONG" ColumnName="LUONG" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="true" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

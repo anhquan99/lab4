@@ -1,0 +1,13 @@
+E:\Work\PTIT\An toàn web và csdl\Nhom\lab4\LAB4\ConsoleApp1\obj\Debug\netcoreapp3.1\ConsoleApp1.csprojAssemblyReference.cache
+E:\Work\PTIT\An toàn web và csdl\Nhom\lab4\LAB4\ConsoleApp1\obj\Debug\netcoreapp3.1\ConsoleApp1.AssemblyInfoInputs.cache
+E:\Work\PTIT\An toàn web và csdl\Nhom\lab4\LAB4\ConsoleApp1\obj\Debug\netcoreapp3.1\ConsoleApp1.AssemblyInfo.cs
+E:\Work\PTIT\An toàn web và csdl\Nhom\lab4\LAB4\ConsoleApp1\obj\Debug\netcoreapp3.1\ConsoleApp1.csproj.CoreCompileInputs.cache
+E:\Work\PTIT\An toàn web và csdl\Nhom\lab4\LAB4\ConsoleApp1\bin\Debug\netcoreapp3.1\ConsoleApp1.exe
+E:\Work\PTIT\An toàn web và csdl\Nhom\lab4\LAB4\ConsoleApp1\bin\Debug\netcoreapp3.1\ConsoleApp1.deps.json
+E:\Work\PTIT\An toàn web và csdl\Nhom\lab4\LAB4\ConsoleApp1\bin\Debug\netcoreapp3.1\ConsoleApp1.runtimeconfig.json
+E:\Work\PTIT\An toàn web và csdl\Nhom\lab4\LAB4\ConsoleApp1\bin\Debug\netcoreapp3.1\ConsoleApp1.runtimeconfig.dev.json
+E:\Work\PTIT\An toàn web và csdl\Nhom\lab4\LAB4\ConsoleApp1\bin\Debug\netcoreapp3.1\ConsoleApp1.dll
+E:\Work\PTIT\An toàn web và csdl\Nhom\lab4\LAB4\ConsoleApp1\bin\Debug\netcoreapp3.1\ConsoleApp1.pdb
+E:\Work\PTIT\An toàn web và csdl\Nhom\lab4\LAB4\ConsoleApp1\obj\Debug\netcoreapp3.1\ConsoleApp1.dll
+E:\Work\PTIT\An toàn web và csdl\Nhom\lab4\LAB4\ConsoleApp1\obj\Debug\netcoreapp3.1\ConsoleApp1.pdb
+E:\Work\PTIT\An toàn web và csdl\Nhom\lab4\LAB4\ConsoleApp1\obj\Debug\netcoreapp3.1\ConsoleApp1.genruntimeconfig.cache
