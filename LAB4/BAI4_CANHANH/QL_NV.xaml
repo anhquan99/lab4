@@ -1,0 +1,186 @@
+﻿<Window x:Class="BAI4_CANHANH.QL_NV"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:BAI4_CANHANH"
+        mc:Ignorable="d"
+      d:DesignHeight="1000" d:DesignWidth="1000"  HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+    <StackPanel Background="White">
+        <StackPanel>
+
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                </Grid.ColumnDefinitions>
+                <StackPanel Grid.Column="0">
+                    <Label FontSize="15" HorizontalAlignment="Left" VerticalAlignment="Bottom">MA NV:</Label>
+                    <TextBox x:Name="txtNV" IsReadOnly="False" Height="20" Margin="20 0"  BorderThickness="0 0 0 1" ></TextBox>
+                </StackPanel>
+                <StackPanel Grid.Column="1">
+                    <Label Grid.Column="0" Foreground="Black" FontSize="15" VerticalAlignment="Bottom"  HorizontalAlignment="Left">HO TEN:</Label>
+                    <TextBox Grid.Column="1"  x:Name="txtTen"  Height="20" Margin="20 0" BorderThickness="0 0 0 1"></TextBox>
+                </StackPanel>
+            </Grid>
+
+
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                </Grid.ColumnDefinitions>
+                <StackPanel Grid.Column="0">
+                    <Label FontSize="15" HorizontalAlignment="Left" VerticalAlignment="Bottom">EMAIL:</Label>
+                    <TextBox x:Name="txtEmail" IsReadOnly="False" Height="20" Margin="20 0"  BorderThickness="0 0 0 1" ></TextBox>
+                </StackPanel>
+                <StackPanel Grid.Column="1">
+                    <Label Grid.Column="0" Foreground="Black" FontSize="15" VerticalAlignment="Bottom"  HorizontalAlignment="Left">LUONG:</Label>
+                    <TextBox Grid.Column="1"  x:Name="txtLuong"  Height="20" Margin="20 0" BorderThickness="0 0 0 1"></TextBox>
+                </StackPanel>
+            </Grid>
+
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                </Grid.ColumnDefinitions>
+                <StackPanel Grid.Column="0">
+                    <Label FontSize="15" HorizontalAlignment="Left" VerticalAlignment="Bottom">TEN DANG NHAP:</Label>
+                    <TextBox x:Name="txtUsername" IsReadOnly="False" Height="20" Margin="20 0"  BorderThickness="0 0 0 1" ></TextBox>
+                </StackPanel>
+                <StackPanel Grid.Column="1">
+                    <Label Grid.Column="0" Foreground="Black" FontSize="15" VerticalAlignment="Bottom"  HorizontalAlignment="Left">MAT KHAU:</Label>
+                    <PasswordBox Grid.Column="1"  x:Name="passwordBox"  Height="20" Margin="20 0" BorderThickness="0 0 0 1"></PasswordBox>
+                </StackPanel>
+            </Grid>
+
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                </Grid.ColumnDefinitions>
+
+            </Grid>
+
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                </Grid.ColumnDefinitions>
+
+                <Button Name="themBtn" Background="Transparent" BorderThickness="0" Width="150" HorizontalAlignment="Center" Grid.Column="0" Margin="0 20" Click="Button_Click">
+                    <TextBlock>THEM</TextBlock>
+                </Button>
+                <Button Name="xoaBtn" Background="Transparent" BorderThickness="0" Width="150" HorizontalAlignment="Center" Grid.Column="1" Margin="0 20" Click="xoaBtn_Click">
+                    <TextBlock>XOA</TextBlock>
+                </Button>
+                <Button Name="suaBtn" Background="Transparent" BorderThickness="0" Width="150" HorizontalAlignment="Center" Grid.Column="2" Margin="0 20" Click="suaBtn_Click">
+                    <TextBlock>SUA</TextBlock>
+                </Button>
+            </Grid>
+        </StackPanel>
+        <Grid x:Name="Content" Background="Transparent" Margin="10" Height="573">
+            <Grid Loaded="Grid_Loaded">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                </Grid.ColumnDefinitions>
+            </Grid>
+            <DataGrid x:Name="dataTable" HorizontalAlignment="Center" 
+                      HorizontalContentAlignment="Center" 
+                      VerticalContentAlignment="Center" 
+                      VerticalAlignment="Top" 
+                      BorderThickness="0 1 0 0"
+                      IsReadOnly="True"
+                      MouseDoubleClick="DataTable_MouseDoubleClick"
+                     >
+                <DataGrid.Columns >
+                    <DataGridTextColumn Width="1*"  Header="MA NV" Binding="{Binding MANV}">
+                        <DataGridTextColumn.ElementStyle>
+                            <Style TargetType="{x:Type TextBlock}">
+                                <Setter Property="TextAlignment" Value="Center"/>
+                            </Style>
+                        </DataGridTextColumn.ElementStyle>
+                        <!--<DataGridTextColumn.CellStyle>
+                            <Style TargetType="DataGridCell">
+                                <Setter Property="BorderBrush" Value="DarkGray" />
+                                <Setter Property="BorderThickness" Value="0" />
+                                <Setter Property="Height" Value="20"/>
+                            </Style>
+                        </DataGridTextColumn.CellStyle>-->
+                        <DataGridTextColumn.HeaderStyle>
+                            <Style TargetType="{x:Type DataGridColumnHeader}">
+                                <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                            </Style>
+                        </DataGridTextColumn.HeaderStyle>
+                    </DataGridTextColumn>
+                    <DataGridTextColumn Width="1*" Header="HO TEN" Binding="{Binding HOTEN}">
+                        <DataGridTextColumn.ElementStyle>
+                            <Style TargetType="{x:Type TextBlock}">
+                                <Setter Property="TextAlignment" Value="Center"/>
+                            </Style>
+                        </DataGridTextColumn.ElementStyle>
+                        <!--<DataGridTextColumn.CellStyle>
+                            <Style TargetType="DataGridCell">
+                                <Setter Property="BorderBrush" Value="DarkGray" />
+                                <Setter Property="BorderThickness" Value="0" />
+                                <Setter Property="Height" Value="20"/>
+                            </Style>
+                        </DataGridTextColumn.CellStyle>-->
+                        <DataGridTextColumn.HeaderStyle>
+                            <Style TargetType="{x:Type DataGridColumnHeader}">
+                                <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                            </Style>
+                        </DataGridTextColumn.HeaderStyle>
+                    </DataGridTextColumn>
+                    <DataGridTextColumn Width="1*" Header="EMAIL" Binding="{Binding EMAIL}">
+                        <DataGridTextColumn.ElementStyle>
+                            <Style TargetType="{x:Type TextBlock}">
+                                <Setter Property="TextAlignment" Value="Center"/>
+                            </Style>
+                        </DataGridTextColumn.ElementStyle>
+                        <!--<DataGridTextColumn.CellStyle>
+                            <Style TargetType="DataGridCell">
+                                <Setter Property="BorderBrush" Value="DarkGray" />
+                                <Setter Property="BorderThickness" Value="0" />
+                                <Setter Property="Height" Value="20"/>
+                            </Style>
+                        </DataGridTextColumn.CellStyle>-->
+                        <DataGridTextColumn.HeaderStyle>
+                            <Style TargetType="{x:Type DataGridColumnHeader}">
+                                <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                            </Style>
+                        </DataGridTextColumn.HeaderStyle>
+                    </DataGridTextColumn>
+                    <DataGridTextColumn Width="1*" Header="LUONG" Binding="{Binding LUONG}">
+                        <DataGridTextColumn.ElementStyle>
+                            <Style TargetType="{x:Type TextBlock}">
+                                <Setter Property="TextAlignment" Value="Center"/>
+                            </Style>
+                        </DataGridTextColumn.ElementStyle>
+                        <!--<DataGridTextColumn.CellStyle>
+                            <Style TargetType="DataGridCell">
+                                <Setter Property="BorderBrush" Value="DarkGray" />
+                                <Setter Property="BorderThickness" Value="0" />
+                                <Setter Property="Height" Value="20"/>
+                            </Style>
+                        </DataGridTextColumn.CellStyle>-->
+                        <DataGridTextColumn.HeaderStyle>
+                            <Style TargetType="{x:Type DataGridColumnHeader}">
+                                <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                            </Style>
+                        </DataGridTextColumn.HeaderStyle>
+                    </DataGridTextColumn>
+
+                </DataGrid.Columns>
+
+            </DataGrid>
+        </Grid>
+
+    </StackPanel>
+</Window>

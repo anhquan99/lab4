@@ -31,6 +31,17 @@
     <Property Name="TENDN" Type="nvarchar" MaxLength="100" Nullable="false" />
     <Property Name="MATKHAU" Type="varbinary(max)" Nullable="false" />
   </EntityType>
+  <Function Name="FIND_NV" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="MANV" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="LOGIN_NV" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="MANV" Type="nvarchar" Mode="In" />
+    <Parameter Name="PASSWORD" Type="nvarchar(max)" Mode="In" />
+  </Function>
+  <Function Name="LOGIN_SV" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="MANV" Type="nvarchar" Mode="In" />
+    <Parameter Name="PASSWORD" Type="nvarchar(max)" Mode="In" />
+  </Function>
   <Function Name="SP_INS_ENCRYPT_NHANVIEN" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="MANV" Type="nvarchar" Mode="In" />
     <Parameter Name="HOTEN" Type="nvarchar" Mode="In" />
@@ -49,6 +60,14 @@
     <Parameter Name="MATKHAU" Type="nvarchar(max)" Mode="In" />
   </Function>
   <Function Name="SP_SEL_ENCRYPT_NHANVIEN" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="UPDATE_NV" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="MANV" Type="nvarchar" Mode="In" />
+    <Parameter Name="HOTEN" Type="nvarchar" Mode="In" />
+    <Parameter Name="EMAIL" Type="nvarchar" Mode="In" />
+    <Parameter Name="LUONG" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="TENDN" Type="nvarchar" Mode="In" />
+    <Parameter Name="MATKHAU" Type="nvarchar(max)" Mode="In" />
+  </Function>
   <EntityContainer Name="QLSV_CANHANModelStoreContainer">
     <EntitySet Name="LOP" EntityType="Self.LOP" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="NHANVIEN" EntityType="Self.NHANVIEN" Schema="dbo" store:Type="Tables" />

@@ -98,5 +98,69 @@ namespace BAI4_CANHANH
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SP_SEL_ENCRYPT_NHANVIEN_Result>("SP_SEL_ENCRYPT_NHANVIEN");
         }
+    
+        public virtual ObjectResult<FIND_NV_Result> FIND_NV(string mANV)
+        {
+            var mANVParameter = mANV != null ?
+                new ObjectParameter("MANV", mANV) :
+                new ObjectParameter("MANV", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<FIND_NV_Result>("FIND_NV", mANVParameter);
+        }
+    
+        public virtual int UPDATE_NV(string mANV, string hOTEN, string eMAIL, string lUONG, string tENDN, string mATKHAU)
+        {
+            var mANVParameter = mANV != null ?
+                new ObjectParameter("MANV", mANV) :
+                new ObjectParameter("MANV", typeof(string));
+    
+            var hOTENParameter = hOTEN != null ?
+                new ObjectParameter("HOTEN", hOTEN) :
+                new ObjectParameter("HOTEN", typeof(string));
+    
+            var eMAILParameter = eMAIL != null ?
+                new ObjectParameter("EMAIL", eMAIL) :
+                new ObjectParameter("EMAIL", typeof(string));
+    
+            var lUONGParameter = lUONG != null ?
+                new ObjectParameter("LUONG", lUONG) :
+                new ObjectParameter("LUONG", typeof(string));
+    
+            var tENDNParameter = tENDN != null ?
+                new ObjectParameter("TENDN", tENDN) :
+                new ObjectParameter("TENDN", typeof(string));
+    
+            var mATKHAUParameter = mATKHAU != null ?
+                new ObjectParameter("MATKHAU", mATKHAU) :
+                new ObjectParameter("MATKHAU", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("UPDATE_NV", mANVParameter, hOTENParameter, eMAILParameter, lUONGParameter, tENDNParameter, mATKHAUParameter);
+        }
+    
+        public virtual ObjectResult<LOGIN_NV_Result> LOGIN_NV(string mANV, string pASSWORD)
+        {
+            var mANVParameter = mANV != null ?
+                new ObjectParameter("MANV", mANV) :
+                new ObjectParameter("MANV", typeof(string));
+    
+            var pASSWORDParameter = pASSWORD != null ?
+                new ObjectParameter("PASSWORD", pASSWORD) :
+                new ObjectParameter("PASSWORD", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<LOGIN_NV_Result>("LOGIN_NV", mANVParameter, pASSWORDParameter);
+        }
+    
+        public virtual ObjectResult<LOGIN_SV_Result> LOGIN_SV(string mANV, string pASSWORD)
+        {
+            var mANVParameter = mANV != null ?
+                new ObjectParameter("MANV", mANV) :
+                new ObjectParameter("MANV", typeof(string));
+    
+            var pASSWORDParameter = pASSWORD != null ?
+                new ObjectParameter("PASSWORD", pASSWORD) :
+                new ObjectParameter("PASSWORD", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<LOGIN_SV_Result>("LOGIN_SV", mANVParameter, pASSWORDParameter);
+        }
     }
 }

@@ -64,6 +64,15 @@
     </ApplicationDefinition>
     <Compile Include="ENCRYPT_DECRYPT\NV_ALGORITHM.cs" />
     <Compile Include="ENCRYPT_DECRYPT\SV_ALGORITHM.cs" />
+    <Compile Include="FIND_NV_Result.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LOGIN_NV_Result.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LOGIN_SV_Result.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
     <Compile Include="LOP.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
@@ -74,6 +83,9 @@
     </Compile>
     <Compile Include="NHANVIEN.cs">
       <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="QL_NV.xaml.cs">
+      <DependentUpon>QL_NV.xaml</DependentUpon>
     </Compile>
     <Compile Include="SINHVIEN.cs">
       <DependentUpon>Model.tt</DependentUpon>
@@ -93,6 +105,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="QL_NV.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Model.Context.cs">

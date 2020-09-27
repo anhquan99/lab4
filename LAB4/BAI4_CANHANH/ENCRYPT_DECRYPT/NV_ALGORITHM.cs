@@ -101,6 +101,10 @@ namespace BAI4_CANHANH.ENCRYPT_DECRYPT
 
             return plaintext;
         }
+        public static string getLuong(string luong)
+        {
+            return DecryptStringFromBytes_Aes(Convert.FromBase64String(luong), key, IV);
+        }
         public void insert_NV(string maNV, string hoTen, string email, string luong, string tenDN, string matKhau)
         {
             using (QLSV_CANHANEntities db = new QLSV_CANHANEntities())
@@ -119,16 +123,36 @@ namespace BAI4_CANHANH.ENCRYPT_DECRYPT
                 db.SP_INS_ENCRYPT_NHANVIEN(maNV, hoTen, email, finalLuong, tenDN, finalMk);
             }
         }
-        public void getNV()
+        public List<SP_SEL_ENCRYPT_NHANVIEN_Result> getNV()
         {
             using (QLSV_CANHANEntities db = new QLSV_CANHANEntities())
             {
+                List<SP_SEL_ENCRYPT_NHANVIEN_Result> list = new List<SP_SEL_ENCRYPT_NHANVIEN_Result>();
                 var tempList = db.SP_SEL_ENCRYPT_NHANVIEN();
                 foreach(var i in tempList)
                 {
-                    
-                    string temp = DecryptStringFromBytes_Aes(Convert.FromBase64String(i.LUONG), key, IV);
+                    i.LUONG = DecryptStringFromBytes_Aes(Convert.FromBase64String(i.LUONG), key, IV);
+                    list.Add(i);
                 }
+                return list;
+            }
+        }
+        public static void  update_NV(string maNV, string hoTen, string email, string luong, string tenDN, string matKhau)
+        {
+            using(QLSV_CANHANEntities db = new QLSV_CANHANEntities())
+            {
+                SHA1Managed sha1 = new SHA1Managed();
+                sha1.ComputeHash(Encoding.UTF8.GetBytes(matKhau));
+                byte[] hashMK = sha1.Hash;
+                StringBuilder buildMK = new StringBuilder();
+                for (int i = 0; i < hashMK.Length; i++)
+                {
+                    buildMK.Append(hashMK[i].ToString());
+                }
+                string finalMk = buildMK.ToString();
+                byte[] encryptedLuong = EncryptStringToBytes_Aes(luong, key, IV);
+                string finalLuong = Convert.ToBase64String(encryptedLuong);
+                db.UPDATE_NV(maNV, hoTen, email, finalLuong, tenDN, finalMk);
             }
         }
     }

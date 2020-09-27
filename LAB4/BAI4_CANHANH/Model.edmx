@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="QLSV_CANHANModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="QLSV_CANHANModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="LOP">
           <Key>
             <PropertyRef Name="MALOP" />
@@ -36,6 +36,17 @@
           <Property Name="TENDN" Type="nvarchar" MaxLength="100" Nullable="false" />
           <Property Name="MATKHAU" Type="varbinary(max)" Nullable="false" />
         </EntityType>
+        <Function Name="FIND_NV" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="MANV" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="LOGIN_NV" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="MANV" Type="nvarchar" Mode="In" />
+          <Parameter Name="PASSWORD" Type="nvarchar(max)" Mode="In" />
+        </Function>
+        <Function Name="LOGIN_SV" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="MANV" Type="nvarchar" Mode="In" />
+          <Parameter Name="PASSWORD" Type="nvarchar(max)" Mode="In" />
+        </Function>
         <Function Name="SP_INS_ENCRYPT_NHANVIEN" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="MANV" Type="nvarchar" Mode="In" />
           <Parameter Name="HOTEN" Type="nvarchar" Mode="In" />
@@ -54,13 +65,20 @@
           <Parameter Name="MATKHAU" Type="nvarchar(max)" Mode="In" />
         </Function>
         <Function Name="SP_SEL_ENCRYPT_NHANVIEN" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="UPDATE_NV" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="MANV" Type="nvarchar" Mode="In" />
+          <Parameter Name="HOTEN" Type="nvarchar" Mode="In" />
+          <Parameter Name="EMAIL" Type="nvarchar" Mode="In" />
+          <Parameter Name="LUONG" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="TENDN" Type="nvarchar" Mode="In" />
+          <Parameter Name="MATKHAU" Type="nvarchar(max)" Mode="In" />
+        </Function>
         <EntityContainer Name="QLSV_CANHANModelStoreContainer">
           <EntitySet Name="LOP" EntityType="Self.LOP" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="NHANVIEN" EntityType="Self.NHANVIEN" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SINHVIEN" EntityType="Self.SINHVIEN" Schema="dbo" store:Type="Tables" />
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="QLSV_CANHANModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -117,12 +135,55 @@
             <Parameter Name="MATKHAU" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="SP_SEL_ENCRYPT_NHANVIEN" ReturnType="Collection(QLSV_CANHANModel.SP_SEL_ENCRYPT_NHANVIEN_Result)" />
+          <FunctionImport Name="FIND_NV" ReturnType="Collection(QLSV_CANHANModel.FIND_NV_Result)">
+          <Parameter Name="MANV" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="UPDATE_NV">
+            <Parameter Name="MANV" Mode="In" Type="String" />
+            <Parameter Name="HOTEN" Mode="In" Type="String" />
+            <Parameter Name="EMAIL" Mode="In" Type="String" />
+            <Parameter Name="LUONG" Mode="In" Type="String" />
+            <Parameter Name="TENDN" Mode="In" Type="String" />
+            <Parameter Name="MATKHAU" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="LOGIN_NV" ReturnType="Collection(QLSV_CANHANModel.LOGIN_NV_Result)">
+            <Parameter Name="MANV" Mode="In" Type="String" />
+            <Parameter Name="PASSWORD" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="LOGIN_SV" ReturnType="Collection(QLSV_CANHANModel.LOGIN_SV_Result)">
+            <Parameter Name="MANV" Mode="In" Type="String" />
+            <Parameter Name="PASSWORD" Mode="In" Type="String" />
+          </FunctionImport>
         </EntityContainer>
         <ComplexType Name="SP_SEL_ENCRYPT_NHANVIEN_Result">
           <Property Type="String" Name="MANV" Nullable="false" MaxLength="20" />
           <Property Type="String" Name="HOTEN" Nullable="false" MaxLength="100" />
           <Property Type="String" Name="EMAIL" Nullable="true" MaxLength="20" />
           <Property Type="String" Name="LUONG" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="FIND_NV_Result">
+          <Property Type="String" Name="MANV" Nullable="false" MaxLength="20" />
+          <Property Type="String" Name="HOTEN" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="EMAIL" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="LUONG" Nullable="true" />
+          <Property Type="String" Name="TENDN" Nullable="false" MaxLength="100" />
+        </ComplexType>
+        <ComplexType Name="LOGIN_NV_Result">
+          <Property Type="String" Name="MANV" Nullable="false" MaxLength="20" />
+          <Property Type="String" Name="HOTEN" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="EMAIL" Nullable="true" MaxLength="20" />
+          <Property Type="Binary" Name="LUONG" Nullable="true" />
+          <Property Type="String" Name="TENDN" Nullable="false" MaxLength="100" />
+          <Property Type="Binary" Name="MATKHAU" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="LOGIN_SV_Result">
+          <Property Type="String" Name="MASV" Nullable="false" MaxLength="20" />
+          <Property Type="String" Name="HOTEN" Nullable="false" MaxLength="100" />
+          <Property Type="DateTime" Name="NGAYSINH" Nullable="true" Precision="23" />
+          <Property Type="String" Name="DIACHI" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="MALOP" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="TENDN" Nullable="false" MaxLength="100" />
+          <Property Type="Binary" Name="MATKHAU" Nullable="false" />
         </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
@@ -173,6 +234,43 @@
                 <ScalarProperty Name="HOTEN" ColumnName="HOTEN" />
                 <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
                 <ScalarProperty Name="LUONG" ColumnName="LUONG" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="FIND_NV" FunctionName="QLSV_CANHANModel.Store.FIND_NV">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="QLSV_CANHANModel.FIND_NV_Result">
+                <ScalarProperty Name="MANV" ColumnName="MANV" />
+                <ScalarProperty Name="HOTEN" ColumnName="HOTEN" />
+                <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+                <ScalarProperty Name="LUONG" ColumnName="LUONG" />
+                <ScalarProperty Name="TENDN" ColumnName="TENDN" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="UPDATE_NV" FunctionName="QLSV_CANHANModel.Store.UPDATE_NV" />
+          <FunctionImportMapping FunctionImportName="LOGIN_NV" FunctionName="QLSV_CANHANModel.Store.LOGIN_NV">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="QLSV_CANHANModel.LOGIN_NV_Result">
+                <ScalarProperty Name="MANV" ColumnName="MANV" />
+                <ScalarProperty Name="HOTEN" ColumnName="HOTEN" />
+                <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+                <ScalarProperty Name="LUONG" ColumnName="LUONG" />
+                <ScalarProperty Name="TENDN" ColumnName="TENDN" />
+                <ScalarProperty Name="MATKHAU" ColumnName="MATKHAU" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="LOGIN_SV" FunctionName="QLSV_CANHANModel.Store.LOGIN_SV">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="QLSV_CANHANModel.LOGIN_SV_Result">
+                <ScalarProperty Name="MASV" ColumnName="MASV" />
+                <ScalarProperty Name="HOTEN" ColumnName="HOTEN" />
+                <ScalarProperty Name="NGAYSINH" ColumnName="NGAYSINH" />
+                <ScalarProperty Name="DIACHI" ColumnName="DIACHI" />
+                <ScalarProperty Name="MALOP" ColumnName="MALOP" />
+                <ScalarProperty Name="TENDN" ColumnName="TENDN" />
+                <ScalarProperty Name="MATKHAU" ColumnName="MATKHAU" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>

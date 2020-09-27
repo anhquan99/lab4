@@ -17,3 +17,5 @@ E:\Work\PTIT\An toàn web và csdl\Nhom\lab4\LAB4\BAI4_CANHANH\obj\Debug\BAI4_CA
 E:\Work\PTIT\An toàn web và csdl\Nhom\lab4\LAB4\BAI4_CANHANH\obj\Debug\BAI4_CANHANH.csproj.CopyComplete
 E:\Work\PTIT\An toàn web và csdl\Nhom\lab4\LAB4\BAI4_CANHANH\obj\Debug\BAI4_CANHANH.exe
 E:\Work\PTIT\An toàn web và csdl\Nhom\lab4\LAB4\BAI4_CANHANH\obj\Debug\BAI4_CANHANH.pdb
+E:\Work\PTIT\An toàn web và csdl\Nhom\lab4\LAB4\BAI4_CANHANH\obj\Debug\QL_NV.g.cs
+E:\Work\PTIT\An toàn web và csdl\Nhom\lab4\LAB4\BAI4_CANHANH\obj\Debug\QL_NV.baml

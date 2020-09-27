@@ -5,8 +5,12 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BAI4_CANHANH"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+      Title="MainWindow" Height="450" Width="800">
     <Grid>
-        
+        <TextBox x:Name="Username" HorizontalAlignment="Left" Height="23" Margin="355,193,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBlock HorizontalAlignment="Left" Margin="142,198,0,0" TextWrapping="Wrap" Text="Username" VerticalAlignment="Top"/>
+        <TextBlock HorizontalAlignment="Left" Margin="142,260,0,0" TextWrapping="Wrap" VerticalAlignment="Top"><Run Text="Password"/><LineBreak/><Run/></TextBlock>
+        <PasswordBox x:Name="Password" HorizontalAlignment="Left" Height="23" Margin="355,254,0,0"  VerticalAlignment="Top" Width="120"/>
+        <Button x:Name="LoginButton" Content="Login" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="259,334,0,0" Click="LoginButton_Click"/>
     </Grid>
 </Window>

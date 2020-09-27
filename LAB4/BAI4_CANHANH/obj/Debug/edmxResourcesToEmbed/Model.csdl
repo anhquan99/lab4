@@ -53,11 +53,54 @@
       <Parameter Name="MATKHAU" Mode="In" Type="String" />
     </FunctionImport>
     <FunctionImport Name="SP_SEL_ENCRYPT_NHANVIEN" ReturnType="Collection(QLSV_CANHANModel.SP_SEL_ENCRYPT_NHANVIEN_Result)" />
+    <FunctionImport Name="FIND_NV" ReturnType="Collection(QLSV_CANHANModel.FIND_NV_Result)">
+      <Parameter Name="MANV" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="UPDATE_NV">
+      <Parameter Name="MANV" Mode="In" Type="String" />
+      <Parameter Name="HOTEN" Mode="In" Type="String" />
+      <Parameter Name="EMAIL" Mode="In" Type="String" />
+      <Parameter Name="LUONG" Mode="In" Type="String" />
+      <Parameter Name="TENDN" Mode="In" Type="String" />
+      <Parameter Name="MATKHAU" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="LOGIN_NV" ReturnType="Collection(QLSV_CANHANModel.LOGIN_NV_Result)">
+      <Parameter Name="MANV" Mode="In" Type="String" />
+      <Parameter Name="PASSWORD" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="LOGIN_SV" ReturnType="Collection(QLSV_CANHANModel.LOGIN_SV_Result)">
+      <Parameter Name="MANV" Mode="In" Type="String" />
+      <Parameter Name="PASSWORD" Mode="In" Type="String" />
+    </FunctionImport>
   </EntityContainer>
   <ComplexType Name="SP_SEL_ENCRYPT_NHANVIEN_Result">
     <Property Type="String" Name="MANV" Nullable="false" MaxLength="20" />
     <Property Type="String" Name="HOTEN" Nullable="false" MaxLength="100" />
     <Property Type="String" Name="EMAIL" Nullable="true" MaxLength="20" />
     <Property Type="String" Name="LUONG" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="FIND_NV_Result">
+    <Property Type="String" Name="MANV" Nullable="false" MaxLength="20" />
+    <Property Type="String" Name="HOTEN" Nullable="false" MaxLength="100" />
+    <Property Type="String" Name="EMAIL" Nullable="true" MaxLength="20" />
+    <Property Type="String" Name="LUONG" Nullable="true" />
+    <Property Type="String" Name="TENDN" Nullable="false" MaxLength="100" />
+  </ComplexType>
+  <ComplexType Name="LOGIN_NV_Result">
+    <Property Type="String" Name="MANV" Nullable="false" MaxLength="20" />
+    <Property Type="String" Name="HOTEN" Nullable="false" MaxLength="100" />
+    <Property Type="String" Name="EMAIL" Nullable="true" MaxLength="20" />
+    <Property Type="Binary" Name="LUONG" Nullable="true" />
+    <Property Type="String" Name="TENDN" Nullable="false" MaxLength="100" />
+    <Property Type="Binary" Name="MATKHAU" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="LOGIN_SV_Result">
+    <Property Type="String" Name="MASV" Nullable="false" MaxLength="20" />
+    <Property Type="String" Name="HOTEN" Nullable="false" MaxLength="100" />
+    <Property Type="DateTime" Name="NGAYSINH" Nullable="true" Precision="23" />
+    <Property Type="String" Name="DIACHI" Nullable="true" MaxLength="200" />
+    <Property Type="String" Name="MALOP" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="TENDN" Nullable="false" MaxLength="100" />
+    <Property Type="Binary" Name="MATKHAU" Nullable="false" />
   </ComplexType>
 </Schema>
